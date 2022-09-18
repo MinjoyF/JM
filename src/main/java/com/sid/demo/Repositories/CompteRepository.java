@@ -12,6 +12,6 @@ import java.util.List;
 //@RepositoryRestResource
 public interface CompteRepository extends JpaRepository<Compte,Long> {
     @RestResource(path = "/byType")
-    public List<Compte>  findByType(@Param("t") TypeCompte type);
+    List<Compte>  findByType(@Param("t") TypeCompte type);
 
 }
