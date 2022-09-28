@@ -1,0 +1,25 @@
+<div *ngIf= "models">
+    <div *ngFor= "let m  of models._embedded.models">
+        <div class="col-md-3">
+            <div class="panel panwl-default"></div>
+
+            <div class="panel-heading">{{m.name}} </div>
+           <div class="panel-body">
+               <table>
+                   <tr>
+                       <td >
+                           <img height="100" src = "{{ this.stylisteService.host +'/api/'+'/photoModel/'+ m.id}}"/>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td>{{m.prix |number :0.00}} Coris</td>
+                   </tr>
+                   <tr>
+                      <td>{{m.dateProduction}}</td>
+                   </tr>
+               </table>
+           </div>
+
+        </div>
+    </div>
+</div>
