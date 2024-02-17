@@ -12,4 +12,5 @@ export class StylisteService {
   public getResource (url){
     return this.http.get(this.host +url);
   }
+  
 }
