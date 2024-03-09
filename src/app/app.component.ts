@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
 
-public stylistes;
+public stylist;
 
 constructor(private stylisteService: StylisteService ,private router:Router) {}
 
@@ -19,8 +19,8 @@ constructor(private stylisteService: StylisteService ,private router:Router) {}
     this.getStylistes();
   }
   private getStylistes() {
-    this.stylisteService.getResource("/api/stylistes")
-    .subscribe(data=>{ this.stylistes= data;
+    this.stylisteService.getResource("/api/stylists")
+    .subscribe(data=>{ this.stylist= data;
     },err=>{
       console.log(err);
     })

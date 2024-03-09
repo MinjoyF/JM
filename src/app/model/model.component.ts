@@ -22,7 +22,7 @@ export class ModelComponent implements OnInit {
       this.getModels('/api/models/search/selectedModels');
     }else if(p2 == 2){
       let idStyl = this.route.snapshot.params.p2;
-      this.getModels('/stylistes/'+ idStyl+'/models');
+      this.getModels('/stylists/'+ idStyl+'/models');
     }
   }
 

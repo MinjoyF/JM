@@ -21,8 +21,8 @@
 </nav>
 <div class= "container">
   <div class= "col-md-3">
-    <ul class= "list-group" *ngIf = "stylistes">
-      <li class="list-group-item " *ngFor = "let c of stylistes._embedded.stylistes">
+    <ul class= "list-group" *ngIf = "stylist">
+      <li class="list-group-item " *ngFor = "let c of stylist._embedded.stylist">
        <a (click)="getModelsByStyl(c)" class=" clickable">{{c.name}}</a>
       </li>
     </ul>
