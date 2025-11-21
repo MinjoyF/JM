@@ -25,4 +25,7 @@ public class Compte {
     @ManyToOne
     private Client client;
 
+  public void setId(Long id) {
+    this.id=id;
+  }
 }
