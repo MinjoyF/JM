@@ -15,4 +15,12 @@ public class Client {
     private String name;
     @OneToMany(mappedBy = "client")
     private Collection<Compte> comptes;
+
+  public Client(Object o, String name, Collection<Compte> comptes) {
+    this.name = name;
+    this.comptes = comptes;
+  }
+
+  public Client (){
+  }
 }

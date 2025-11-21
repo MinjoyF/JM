@@ -22,4 +22,21 @@ public class Compte {
     private TypeCompte type;
     @ManyToOne
     private Client client;
+
+  public Compte(Object o, double solde, Date dateCreation, TypeCompte type, Client c1) {
+    this.solde = solde;
+    this.dateCreation = dateCreation;
+    this.type = type;
+    this.client = c1;
+  }
+  public Compte() {
+  }
+
+
+  public double getSolde() {
+    return solde;
+  }
+
+  public void setId(Long id) {
+  }
 }
