@@ -2,7 +2,6 @@ package com.sid.demo;
 
 import com.sid.demo.web.CompteRestJaxRSAPI;
 import org.glassfish.jersey.server.ResourceConfig;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration

@@ -30,7 +30,7 @@ public class CompteRestController {
     }
 
     @PutMapping("/comptes/{id}")
-    public Compte update (@RequestBody Compte compte, @PathVariable("id") Long id){
+    public Compte updateCompte (@RequestBody Compte compte, @PathVariable("id") Long id){
         compte.setId(id);
         return compteRepository.save(compte);
     }
