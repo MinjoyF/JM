@@ -34,33 +34,50 @@ public class DemoApplication {
   @Bean
   CommandLineRunner initUsers(AppUserRepository repo, PasswordEncoder encoder) {
     return args -> {
-      AppUser u = new AppUser();
-      u.setUsername("admin");
-      u.setPassword(encoder.encode("1234"));
-      u.setRoles(Set.of("ROLE_ADMIN"));
-      repo.save(u);
+      AppUser admin = new AppUser();
+      admin.setUsername("admin");
+      admin.setPassword(encoder.encode("1234"));
+      admin.setRoles(Set.of("ADMIN"));
+      repo.save(admin);
+
+      AppUser user = new AppUser();
+      user.setUsername("user");
+      user.setPassword(encoder.encode("4567"));
+      user.setRoles(Set.of("USER"));
+      repo.save(user);
     };
   }
 
   @Bean
- 	CommandLineRunner start(CompteRepository compteRepository,
-							RepositoryRestConfiguration restConfiguration,
-							ClientRepository clientRepository
-	){
-		return args -> {
-			restConfiguration.exposeIdsFor(Compte.class);
-			Client c1 =clientRepository.save(new Client(null, "Ghislain",null));
-			Client c2 =clientRepository.save(new Client(null, "Nicaise",null));
-			Client c3 =clientRepository.save(new Client(null, "Ornella",null));
+  CommandLineRunner start(
+    CompteRepository compteRepository,
+    RepositoryRestConfiguration restConfiguration,
+    ClientRepository clientRepository
+  ) {
+    return args -> {
+      // IDs für REST exposed machen
+      restConfiguration.exposeIdsFor(Compte.class);
 
+      // Clients erstellen
+      Client c1 = clientRepository.save(new Client("Ghislain", null));
+      Client c2 = clientRepository.save(new Client("Nicaise", null));
+      Client c3 = clientRepository.save(new Client("Ornella", null));
 
-			compteRepository.save(new Compte(null, Math.random()*90000,new Date(), TypeCompte.EPARGNE,c1));
-			compteRepository.save(new Compte(null, Math.random()*90000,new Date(), TypeCompte.COURANT,c2));
-			compteRepository.save(new Compte(null, Math.random()*90000,new Date(), TypeCompte.EPARGNE,c3));
-			compteRepository.findAll().forEach(c ->{
-				System.out.println(c.getSolde());
-			} );
-		};
-	}
+      // Comptes erstellen
+      Compte cp1 = new Compte(Math.random() * 90000, new Date(), TypeCompte.EPARGNE, c1);
+      Compte cp2 = new Compte(Math.random() * 90000, new Date(), TypeCompte.COURANT, c2);
+      Compte cp3 = new Compte(Math.random() * 90000, new Date(), TypeCompte.EPARGNE, c3);
+
+      compteRepository.save(cp1);
+      compteRepository.save(cp2);
+      compteRepository.save(cp3);
+
+      // Alle Comptes ausgeben
+      compteRepository.findAll().forEach(c ->
+        System.out.println("Compte ID: " + c.getId() + ", Solde: " + c.getSolde() + ", Client: " + c.getClient().getName())
+      );
+    };
+  }
+
 
 }
