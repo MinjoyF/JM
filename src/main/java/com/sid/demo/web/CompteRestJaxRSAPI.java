@@ -1,9 +1,8 @@
 package com.sid.demo.web;
 
-import com.sid.demo.Repositories.CompteRepository;
+import com.sid.demo.repositories.CompteRepository;
 import com.sid.demo.entities.Compte;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;

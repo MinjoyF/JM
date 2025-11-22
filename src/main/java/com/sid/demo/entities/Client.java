@@ -21,4 +21,8 @@ public class Client {
     @OneToMany(mappedBy = "client")
     private Collection<Compte> comptes;
 
+  public Client(Object o, String name, Collection<Compte> compte) {
+    this.name= name;
+    this.comptes= compte;
+  }
 }

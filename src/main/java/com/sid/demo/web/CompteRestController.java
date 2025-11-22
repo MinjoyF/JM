@@ -1,9 +1,10 @@
 package com.sid.demo.web;
 
-import com.sid.demo.Repositories.CompteRepository;
+import com.sid.demo.repositories.CompteRepository;
 import com.sid.demo.entities.Compte;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,17 +26,20 @@ public class CompteRestController {
     }
 
     @PostMapping("/comptes")
+    //@PreAuthorize("hasRole('ADMIN')")
     public Compte save (@RequestBody Compte compte){
         return compteRepository.save(compte);
     }
 
     @PutMapping("/comptes/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public Compte updateCompte (@RequestBody Compte compte, @PathVariable("id") Long id){
         compte.setId(id);
         return compteRepository.save(compte);
     }
 
     @DeleteMapping("/comptes/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public void delete(@PathVariable("id") Long id){
         compteRepository.deleteById(id);
     }
