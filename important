@@ -1,0 +1,10 @@
+token Erzeugung:
+
+curl -X POST http://localhost:8080/auth/login \
+> -H "Content-Type: application/json" \
+> -d '{"username":"admin","password":"1234"}'
+
+
+Eingabe der erzeugten Token:
+
+curl -H "Authorization: Bearer <TOKEN WHITOUT BRAKETT>" http://localhost:8080/banque/comptes
