@@ -5,7 +5,21 @@ curl -X POST http://localhost:8080/auth/login \
 -d '{"username":"admin","password":"1234"}'
 
 
+curl -X POST http://localhost:8080/auth/login \
+ -H "Content-Type: application/json" \
+-d '{"username":"user","password":"4567"}'
+
+curl -X DELETE http://localhost:8080/auth/login \
+ -H "Content-Type: application/json" \
+-d '{"username":"ADMIN","password":"1234"}'
+
+
 Eingabe der erzeugten Token:
 
-curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc2Mzg1MzkwNCwiZXhwIjoxNzYzODU3NTA0fQ.5_FlIX1JVqAfYu6WSwwX9-aLo0wra-3QXEHikAc4Yc8" http://localhost:8080/banque/comptes
+curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiaWF0IjoxNzYzOTEwMDk4LCJleHAiOjE3NjM5MTM2OTh9.LIhNALaixneUv7P-tcMyxCOk35ZtCATpwNZeptxnczY" http://localhost:8080/banque/comptes
 curl -H "Authorization: Bearer <TOKEN WHITOUT BRAKETT>" http://localhost:8080/banque/comptes
+
+FOR DELETING
+
+curl -X DELETE http://localhost:8080/banque/comptes/2 \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc2MzkwOTkwNiwiZXhwIjoxNzYzOTEzNTA2fQ.okfT-YMKXAR5ahgr9J9sFLdWfymFIiriEnZhgkYBWno"
